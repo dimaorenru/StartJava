@@ -5,23 +5,27 @@ public class ConditionalStatement {
         if(age > 20) {
             System.out.println("Да, верно");
         }
+
         boolean maleGender = true;
         if(maleGender) {
             System.out.println("Да, верно");
         }
+
         if(!maleGender) {
             System.out.println("Нет, не верно");
         }
+
         float growth = 1.88f;
         if(growth < 1.80){
             System.out.println("Да, верно");
         } else {
             System.out.println("Нет, не верно");
         }
+        
         char firstLetterName = 'D';
         if(firstLetterName == 'M') {
             System.out.println("Нет, не верно");
-        } else if(firstLetterName == 'I' || firstLetterName !='D') {
+        } else if(firstLetterName == 'I' || firstLetterName != 'D') {
             System.out.println("Нет, не верно");
         } else {
             System.out.println("Да, верно");
