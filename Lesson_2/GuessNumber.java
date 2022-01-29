@@ -3,19 +3,19 @@ import java.util.Random;
 
 public class GuessNumber {
     Scanner scanner = new Scanner(System.in);
-    Random random = new Random();
     private int guessNumber;
-    private int attempt;
     private Player player1;
     private Player player2;
+    public int attempt;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
+        Random random = new Random();
+        guessNumber = random.nextInt(100) + 1;
     }
 
     public void start() {
-        guessNumber = random.nextInt(100) + 1;
         while(true) {
             attempt++;
             if (makeMove(player1.getName())) {
@@ -33,7 +33,6 @@ public class GuessNumber {
         int inputNumber = scanner.nextInt();
         if (inputNumber == guessNumber) {
             System.out.println("Выиграл " + playerName);
-            attempt = 0;
             return true;
         }
         if (inputNumber > guessNumber) {
