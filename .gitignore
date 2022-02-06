@@ -1,13 +1,10 @@
-/.idea/
-/log/
-/target/
-/out/
-/*.iml
-/*.log
-/*.class
-/startjava.iml
-*.ctxt
-.mtj.tmp/
+/out
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
 
 # Package Files #
 *.jar
