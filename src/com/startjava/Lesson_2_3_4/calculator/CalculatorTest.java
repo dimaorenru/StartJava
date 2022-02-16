@@ -3,26 +3,30 @@ package com.startjava.Lesson_2_3_4.calculator;
 import java.util.Scanner;
 
 public class CalculatorTest {
+    static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
-        do {
-            calc.calculationData();
-            System.out.println(calc.calculate());
-        } while (!isExit());
+        createCalculator();
+        isNext();
     }
 
-    public static boolean isExit() {
-        Scanner input = new Scanner(System.in);
-        while (true) {
+    private static void createCalculator() {
+        Calculator calculator = new Calculator();
+        System.out.print("Введите математическое выражение: ");
+        System.out.println(calculator.calculate(scan.nextLine()));
+    }
+
+    private static void isNext() {
+        String answer;
+        do {
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-            String exit = input.nextLine();
-            if ("no".equals(exit)) {
-                return true;
-            } else if ("yes".equals(exit)) {
-                return false;
-            } else {
-                System.out.println("Введен неверный ответ! Попробуйте еще раз");
+            answer = scan.nextLine();
+            if (answer.equals("yes")) {
+                createCalculator();
+            } else if (answer.equals("no")) {
+                System.out.println("Завершение программы");
+                break;
             }
-        }
+        } while (!answer.equals("yes") || !answer.equals("no"));
     }
 }
