@@ -24,13 +24,10 @@ public class CalculatorTest {
         while (true) {
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             String exit = input.nextLine();
-            if (exit.equalsIgnoreCase("yes")) {
+            if (exit.equalsIgnoreCase("yes"))
                 return true;
-            } else if (exit.equalsIgnoreCase("no")) {
+            if (exit.equalsIgnoreCase("no"))
                 return false;
-            } else {
-                System.out.println("Введен неверный ответ! Попробуйте еще раз");
-            }
         }
     }
 }
