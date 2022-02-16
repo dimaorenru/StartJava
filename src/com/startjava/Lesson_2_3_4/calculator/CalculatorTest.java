@@ -6,8 +6,11 @@ public class CalculatorTest {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        createCalculator();
-        isNext();
+        while (true) {
+            createCalculator();
+            if (!isNext())
+                return;
+        }
     }
 
     private static void createCalculator() {
@@ -16,17 +19,18 @@ public class CalculatorTest {
         System.out.println(calculator.calculate(scan.nextLine()));
     }
 
-    private static void isNext() {
-        String answer;
-        do {
+    public static boolean isNext() {
+        Scanner input = new Scanner(System.in);
+        while (true) {
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-            answer = scan.nextLine();
-            if (answer.equals("yes")) {
-                createCalculator();
-            } else if (answer.equals("no")) {
-                System.out.println("Завершение программы");
-                break;
+            String exit = input.nextLine();
+            if (exit.equalsIgnoreCase("yes")) {
+                return true;
+            } else if (exit.equalsIgnoreCase("no")) {
+                return false;
+            } else {
+                System.out.println("Введен неверный ответ! Попробуйте еще раз");
             }
-        } while (!answer.equals("yes") || !answer.equals("no"));
+        }
     }
 }
