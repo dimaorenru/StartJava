@@ -6,11 +6,9 @@ public class CalculatorTest {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        while (true) {
+        do {
             createCalculator();
-            if (!isNext())
-                return;
-        }
+        } while(isNext());
     }
 
     private static void createCalculator() {
@@ -21,13 +19,13 @@ public class CalculatorTest {
 
     public static boolean isNext() {
         Scanner input = new Scanner(System.in);
-        while (true) {
+        String option;
+        do {
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-            String exit = input.nextLine();
-            if (exit.equalsIgnoreCase("yes"))
+            option = input.nextLine();
+            if ("yes".equalsIgnoreCase(option))
                 return true;
-            if (exit.equalsIgnoreCase("no"))
-                return false;
-        }
+        } while (!"no".equals(option));
+        return false;
     }
 }
