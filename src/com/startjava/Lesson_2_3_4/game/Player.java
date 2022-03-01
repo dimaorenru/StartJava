@@ -16,6 +16,9 @@ public class Player {
 
     public void setNumber(int number, int index) {
         numbers[index] = number;
+        if (number < 0 || number > 100) {
+            System.out.println("Вы ввели число вне указанного диапазона");
+        }
     }
 
     public int[] getNumbers(int index) {

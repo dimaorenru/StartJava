@@ -15,23 +15,20 @@ public class GuessNumber {
     }
 
     void start() {
-        guessNumber = random.nextInt(101);
+        guessNumber = random.nextInt(100) + 1;
         System.out.println("Введите числа от 0 до 100. У вас 10 попыток");
         int attempt;
-        final int maxNumberAttempt = 10;
-        for (attempt = 0; attempt < maxNumberAttempt; attempt++) {
+        for (attempt = 0; attempt < 10; attempt++) {
             inputNumber(player1, attempt);
             if (checkNumber(player1, attempt)) {
-                attempt++;
                 break;
             }
             inputNumber(player2, attempt);
             if (checkNumber(player2, attempt)) {
-                attempt++;
                 break;
             }
         }
-        if (attempt == maxNumberAttempt) {
+        if (attempt == 9) {
             System.out.println("У " + player1.getName() + " закончились попытки");
             System.out.println("У " + player2.getName() + " закончились попытки");
             System.out.println("Загаданное число - " + guessNumber);
@@ -45,9 +42,6 @@ public class GuessNumber {
     private void inputNumber(Player player, int index) {
         System.out.println("Попытка " + (index + 1) + " игрока " + player.getName());
         int number = new Scanner(System.in).nextInt();
-        if (number < 0 || number > 100) {
-            System.out.println("Вы ввели число вне указанного диапазона");
-        }
         player.setNumber(number, index);
     }
 
@@ -55,11 +49,10 @@ public class GuessNumber {
         if (player.getNumber(index) == guessNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber(index) + " с " + (index + 1) + " попытки");
             return true;
-        } else {
-            String s = player.getNumber(index) > guessNumber ? "больше" : "меньше";
-            System.out.println("Введенное вами число " + s + " того, что загадал компьютер");
-            return false;
         }
+        String check = player.getNumber(index) > guessNumber ? "больше" : "меньше";
+        System.out.println("Введенное вами число " + check + " того, что загадал компьютер");
+        return false;
     }
 
     private void outputNumbers(int[] numbers) {
